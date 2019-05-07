@@ -47,7 +47,7 @@
                 <div style="width: 150px; margin: auto">
                     <p style="margin-top: 20px;">
                         <span class="cz" onclick="lookImage('${image['path']}')">查看</span>
-                        <span class="cz" onclick="deleteImage('${image['id']}')">删除</span>
+                        <span class="cz" onclick="deleteImage('${image['id']}', '${image['name']}')">删除</span>
                     </p>
                 </div>
             </div>
@@ -122,11 +122,29 @@
         });
     }
 
-    function delteImage(id) {
-        if (isEmpty(id)) {
-            alertMsg('error', 300, 'id为空！');
+    function deleteImage(id, name) {
+        if (isEmpty(id) || isEmpty(name)) {
+            alertMsg('error', 300, '操作失败！');
             return;
         }
+        Lobibox.confirm({
+            msg: '确定删除吗？',
+            title: '提示',
+            iconClass: false,
+            callback: function($this, type, ev) {
+                if (type == 'yes') {
+                    $.ajax({
+                        url: "/admin/image/delete?id=" + id + "&name=" + name,
+                        method: "GET",
+                        dataType : "JSON",
+                        success: function (data) {
+                            responseMsg(data);
+                        }
+                    })
+                }
+            }
+        });
+
     }
 </script>
 </html>

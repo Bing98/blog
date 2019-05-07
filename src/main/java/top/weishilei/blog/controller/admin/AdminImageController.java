@@ -21,6 +21,8 @@ import java.io.File;
 public class AdminImageController extends BaseController {
     @Autowired
     private ImageServiceImpl imageService;
+    private String savePath = getPath() + File.separator + "image" + File.separator;
+
 
     @GetMapping
     public ModelAndView image() {
@@ -35,10 +37,9 @@ public class AdminImageController extends BaseController {
     public String image(@RequestParam("file") MultipartFile file) {
         String name = file.getOriginalFilename();
         String suffix = name.substring(name.lastIndexOf("."), name.length());
-        String path = getPath() + File.separator + "image" + File.separator;
         String fileName = System.currentTimeMillis() + suffix;
         try {
-            file.transferTo(new File(path + fileName));
+            file.transferTo(new File(savePath + fileName));
             Image image = new Image();
             image.setName(fileName);
             image.setPath("/static/image/" + fileName);
@@ -47,6 +48,22 @@ public class AdminImageController extends BaseController {
             return Result.success();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+
+        return Result.fail();
+    }
+
+    @ResponseBody
+    @GetMapping("/delete")
+    public String delte(Integer id, String name) {
+        if (id == null || id < 1) {
+            return Result.fail();
+        }
+
+        boolean isDelete = new File(savePath + name).delete();
+        if (isDelete) {
+            boolean isSuccess = imageService.delete(id) > 0;
+            return isSuccess ? Result.success() : Result.fail();
         }
 
         return Result.fail();
