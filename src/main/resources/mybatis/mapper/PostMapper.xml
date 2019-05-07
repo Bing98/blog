@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.weishilei.blog.mapper.PostMapper">
+    <resultMap id="BaseResultMap" type="top.weishilei.blog.domain.Post">
+        <id column="id" property="id" jdbcType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="view_count" property="viewCount" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="comment_count" property="commentCount" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="like_count" property="likeCount" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" javaType="Date" />
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" javaType="Date" />
+        <result column="markDown_content" property="markDownContent" />
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        id, user_id, author, title, markDown_content, content,
+        view_count, comment_count, like_count,
+        status, create_time, update_time
+    </sql>
+
+    <select id="selectByTitle" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from post where title = #{title}
+    </select>
+
+    <select id="selectSearchByTitle" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from post where title like "%"#{keyword}"%" or content like "%"#{keyword}"%" and status = 1
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from post where id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from post
+    </select>
+
+    <select id="selectRecentPost" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from post order by id desc limit 0,5
+    </select>
+
+    <select id="selectByStatus" resultMap="BaseResultMap" parameterType="INTEGER">
+        select
+        <include refid="BaseColumnList"></include>
+        from post where status = #{status}
+    </select>
+
+    <insert id="insert" parameterType="Post" useGeneratedKeys="true" keyProperty="id">
+        insert into post (id, user_id, author, title, markDown_content, content, status, create_time, update_time)
+        values (#{id}, #{userId}, #{author}, #{title}, #{markDownContent}, #{content}, #{status}, now(), now())
+    </insert>
+
+    <delete id="deleteById" parameterType="Integer">
+        delete from post where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateStatus">
+        update post set status = #{status} where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <update id="update">
+        update post set title = #{title},content = #{content},update_time = now(), status = #{status}, markDown_content = #{markDownContent} where id = #{id}
+    </update>
+
+    <update id="updateViewCount">
+        update post set view_count = #{viewCount} where id = #{id}
+    </update>
+
+    <update id="updateCommentCount">
+        update post set comment_count = #{commentCount} where id = #{id}
+    </update>
+
+
+    <select id="selectYear" resultType="String">
+        select CONCAT(year(create_time),'.', month(create_time)) from post GROUP BY CONCAT(year(create_time),'.', month(create_time));
+    </select>
+
+    <select id="selectByYear" resultMap="BaseResultMap" parameterType="String">
+        select
+        <include refid="BaseColumnList"></include>
+        from post where CONCAT(year(create_time),'.', month(create_time)) = #{year} order by id desc
+    </select>
+
+    <select id="selectByIds" resultMap="BaseResultMap" parameterType="Integer">
+        select
+        <include refid="BaseColumnList"></include>
+        from post where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </select>
+</mapper>

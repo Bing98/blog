@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.weishilei.blog.mapper.LogMapper">
+    <resultMap id="BaseResultMap" type="top.weishilei.blog.domain.Log">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="user_id" property="userId" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" javaType="Date" />
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        id, content, user_id, create_time, ip
+    </sql>
+
+    <insert id="insert" parameterType="Log" useGeneratedKeys="true" keyProperty="id">
+        insert into logs (id, content, user_id, ip) values (#{id}, #{content}, #{userId}, #{ip})
+    </insert>
+
+    <select id="select" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from logs ORDER BY id desc
+    </select>
+
+    <delete id="delete" parameterType="Integer">
+        delete from logs where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>

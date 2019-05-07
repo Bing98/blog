@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.weishilei.blog.mapper.TagMapper">
+    <resultMap id="BaseResultMap" type="top.weishilei.blog.domain.Tag">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="INTEGER" />
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        id, name, description
+    </sql>
+
+    <select id="selectByName" resultMap="BaseResultMap" parameterType="String">
+        select
+        <include refid="BaseColumnList" />
+         from tag where name = #{name}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+         from tag
+    </select>
+
+    <insert id="insert" parameterType="Tag" useGeneratedKeys="true" keyProperty="id">
+        insert into tag (id, name, description) values (#{id}, #{name}, #{description})
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        delete from tag where id = #{id}
+    </delete>
+
+    <update id="update" parameterType="Tag">
+        update tag set name = #{name}, description = #{description} where id = #{id}
+    </update>
+
+    <select id="selectById" parameterType="Integer" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList" />
+         from tag where id = #{id}
+    </select>
+</mapper>

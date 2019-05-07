@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.weishilei.blog.mapper.PostCategoryRefMapper">
+    <resultMap id="BaseResultMap" type="top.weishilei.blog.domain.PostCategoryRef">
+        <result column="post_id" property="postId" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="category_id" property="categoryId" jdbcType="INTEGER" javaType="INTEGER" />
+    </resultMap>
+
+    <insert id="insert" parameterType="PostCategoryRef">
+        insert into post_category (post_id, category_id) values
+        <foreach collection="postCategoryRef" item="item" separator=",">
+            (#{item.postId}, #{item.categoryId})
+        </foreach>
+    </insert>
+
+    <select id="selectByPostId" resultMap="BaseResultMap" resultType="List">
+        select * from post_category where post_id = #{id}
+    </select>
+
+    <select id="selectByCategoryId" resultMap="BaseResultMap" resultType="List">
+        select * from post_category where category_id = #{id}
+    </select>
+
+    <delete id="deleteByPostId" parameterType="INTEGER">
+        delete from post_category where post_id = #{id}
+    </delete>
+
+    <delete id="deleteByCategoryId" parameterType="INTEGER">
+        delete from post_category where category_id = #{id}
+    </delete>
+</mapper>

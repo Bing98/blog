@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.weishilei.blog.mapper.WebSiteConfigMapper">
+    <resultMap id="BaseResultMap" type="top.weishilei.blog.domain.WebSiteConfig">
+        <result column="head_image" property="headImage" jdbcType="VARCHAR" javaType="STRING" />
+    </resultMap>
+
+    <select id="select" resultMap="BaseResultMap">
+        select * from website_config
+    </select>
+
+    <update id="updateBase">
+        update website_config set weibo = #{weibo}, email = #{email},
+        wechat = #{wechat}, qq = #{qq}, footer = #{footer}
+    </update>
+
+    <update id="updateSeo">
+        update website_config set title = #{title}, keyword = #{keyword},
+        description = #{description}
+    </update>
+</mapper>

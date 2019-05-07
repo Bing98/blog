@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.weishilei.blog.mapper.ImageMapper">
+    <resultMap id="BaseResultMap" type="top.weishilei.blog.domain.Image">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" javaType="Date" />
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        id, name, path, create_time
+    </sql>
+
+    <select id="select" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from image
+    </select>
+
+    <insert id="insert" parameterType="Image">
+        insert into image (id, name, path) values (#{id}, #{name}, #{path})
+    </insert>
+
+    <delete id="delete" parameterType="Integer">
+        delete from image where id = #{id}
+    </delete>
+</mapper>

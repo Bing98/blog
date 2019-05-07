@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.weishilei.blog.mapper.CommentMapper">
+    <resultMap id="BaseResultMap" type="top.weishilei.blog.domain.Comment">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="post_id" property="postId" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="post_title" property="postTitle"/>
+        <result column="user_id" property="userId" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP" javaType="Date" />
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        id, pid, post_id, post_title, user_id, name, email, url, content,
+        ip, agent, status, create_time
+    </sql>
+
+    <select id="selectByPostId" resultMap="BaseResultMap" parameterType="Integer">
+        select
+        <include refid="BaseColumnList"></include>
+        from comment where post_id = #{id}
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="Integer">
+        select
+        <include refid="BaseColumnList"></include>
+        from comment where id = #{id}
+    </select>
+
+    <select id="selectAll" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from comment
+    </select>
+
+    <select id="selectByPostIdAndStatus" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from comment where post_id = #{id} and status = #{status}
+    </select>
+
+    <select id="selectByStatus" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from comment where status = #{status}
+    </select>
+
+    <update id="updateStatus">
+        update comment set status = #{status} where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </update>
+
+    <insert id="insert" parameterType="Comment" useGeneratedKeys="true" keyProperty="id">
+        insert into comment (id, pid, post_id, post_title, user_id, name, email, url, content,
+        ip, agent, status, create_time) values (#{id}, #{pid}, #{postId}, #{postTitle}, #{userId},
+        #{name}, #{email}, #{url}, #{content}, #{ip}, #{agent}, #{status}, #{createTime})
+    </insert>
+
+    <delete id="deleteByPostId" parameterType="Integer">
+        delete from comment where post_id = #{id}
+    </delete>
+
+    <delete id="delete" parameterType="Integer">
+        delete from comment where id in
+        <foreach collection="ids" item="id" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+</mapper>
