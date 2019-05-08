@@ -130,7 +130,7 @@
                 </ul>
                 <ul class="sub-menu">
                     <li>
-                        <a href="#" onclick="switchPage('/admin/image/slider', -11)">
+                        <a href="#" onclick="switchPage('/admin/image/banner', -11)">
                             <i class="iconfont">&#xe6a7;</i>
                             <cite>轮播图管理</cite>
                         </a>

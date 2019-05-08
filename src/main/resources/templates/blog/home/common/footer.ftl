@@ -38,6 +38,7 @@
 <script type="text/javascript" src="/static/plugins/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="/static/plugins/live2d/js/message.js"></script>
 <script type="text/javascript">
-    loadlive2d("live2d", "/static/plugins/live2d/model/lfqy/2.json");
+    //loadlive2d("live2d", "/static/plugins/live2d/model/lfqy/2.json");
+    loadlive2d("live2d", "/static/plugins/live2d/model/xm/13.json");
     //loadlive2d("live2d", "/static/plugins/live2d/model/tia/model.json");
 </script>

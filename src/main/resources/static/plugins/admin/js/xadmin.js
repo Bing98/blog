@@ -11,7 +11,7 @@ $(function () {
         "-8" : "/admin/config",
         "-9" : "/admin/link",
         "-10" : "/admin/image",
-        "-11" : "/admin/image/slider"
+        "-11" : "/admin/image/banner"
     };
 
     tableCheck = {

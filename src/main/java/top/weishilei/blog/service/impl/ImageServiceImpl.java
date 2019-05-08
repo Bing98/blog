@@ -39,4 +39,13 @@ public class ImageServiceImpl implements ImageService {
 
         return imageMapper.delete(id);
     }
+
+    @Override
+    public Image selectById(Integer id) {
+        if (id == null || id < 1) {
+            return null;
+        }
+
+        return imageMapper.selectById(id);
+    }
 }

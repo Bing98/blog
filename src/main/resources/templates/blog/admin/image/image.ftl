@@ -44,7 +44,7 @@
         <#list imageList as image >
             <div style="display: inline-block;">
                 <img style="max-width: 300px; max-height: 300px;" src="${image['path']}" />
-                <div style="width: 150px; margin: auto">
+                <div style="width: 196px; margin: auto">
                     <p style="margin-top: 20px;">
                         <span class="cz" onclick="lookImage('${image['path']}')">查看</span>
                         <span class="cz" onclick="deleteImage('${image['id']}', '${image['name']}')">删除</span>

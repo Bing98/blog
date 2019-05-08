@@ -12,6 +12,12 @@
         id, name, path, create_time
     </sql>
 
+    <select id="selectById" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from image where id = #{id}
+    </select>
+
     <select id="select" resultMap="BaseResultMap">
         select
         <include refid="BaseColumnList"></include>

@@ -27,4 +27,11 @@ public interface ImageService {
      * @return
      */
     Integer delete(Integer id);
+
+    /**
+     * 根据id查询
+     * @param id
+     * @return
+     */
+    Image selectById(Integer id);
 }

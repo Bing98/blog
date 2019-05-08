@@ -69,9 +69,9 @@ public class AdminImageController extends BaseController {
         return Result.fail();
     }
 
-    @GetMapping("/slider")
+    @GetMapping("/banner")
     public ModelAndView slider() {
-        ModelAndView modelAndView = new ModelAndView("/admin/image/slider-image");
+        ModelAndView modelAndView = new ModelAndView("/admin/image/banner");
 
         return modelAndView;
     }

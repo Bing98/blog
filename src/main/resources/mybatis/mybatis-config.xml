@@ -21,5 +21,6 @@
         <typeAlias alias="Comment" type="top.weishilei.blog.domain.Comment" />
         <typeAlias alias="Link" type="top.weishilei.blog.domain.Link" />
         <typeAlias alias="Image" type="top.weishilei.blog.domain.Image" />
+        <typeAlias alias="Banner" type="top.weishilei.blog.domain.Banner" />
     </typeAliases>
 </configuration>

@@ -16,4 +16,6 @@ public interface ImageMapper {
     Integer insert(Image image);
 
     Integer delete(Integer id);
+
+    Image selectById(Integer id);
 }
