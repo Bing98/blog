@@ -15,7 +15,7 @@
     <span>轮播图管理</span>
 </div>
 <div class="x-body col-md-12">
-    <button class="layui-btn"><i class="layui-icon layui-icon-release"></i>添加</button>
+    <button class="layui-btn" id="add"><i class="layui-icon layui-icon-add-1"></i>添加</button>
     <table class="layui-table x-admin">
         <thead>
         <tr>
@@ -26,11 +26,17 @@
         </tr>
         </thead>
         <tbody>
-        <tr>
-
-        </tr>
         </tbody>
     </table>
 </div>
+<script>
+    $("#add").click(function () {
+        layer.open({
+            type: 2,
+            area: ['55%', '90%'],
+            content: '/admin/image/addBanner'
+        })
+    })
+</script>
 </body>
 </html>

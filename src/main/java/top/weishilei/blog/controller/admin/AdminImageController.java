@@ -9,6 +9,7 @@ import top.weishilei.blog.controller.BaseController;
 import top.weishilei.blog.domain.Image;
 import top.weishilei.blog.domain.Result;
 import top.weishilei.blog.service.impl.ImageServiceImpl;
+import top.weishilei.blog.service.impl.PostServiceImpl;
 
 import java.io.File;
 
@@ -21,6 +22,8 @@ import java.io.File;
 public class AdminImageController extends BaseController {
     @Autowired
     private ImageServiceImpl imageService;
+    @Autowired
+    private PostServiceImpl postService;
     private String savePath = getPath() + File.separator + "image" + File.separator;
 
 
@@ -59,7 +62,6 @@ public class AdminImageController extends BaseController {
         if (id == null || id < 1) {
             return Result.fail();
         }
-
         boolean isDelete = new File(savePath + name).delete();
         if (isDelete) {
             boolean isSuccess = imageService.delete(id) > 0;
@@ -72,6 +74,15 @@ public class AdminImageController extends BaseController {
     @GetMapping("/banner")
     public ModelAndView slider() {
         ModelAndView modelAndView = new ModelAndView("/admin/image/banner");
+
+        return modelAndView;
+    }
+
+    @GetMapping("/addBanner")
+    public ModelAndView addBanner() {
+        ModelAndView modelAndView = new ModelAndView("/admin/image/add-image");
+        modelAndView.addObject("imageList", imageService.select());
+        modelAndView.addObject("postList", postService.selectAll());
 
         return modelAndView;
     }
