@@ -12,11 +12,7 @@ import top.weishilei.blog.controller.BaseController;
 import top.weishilei.blog.domain.*;
 import top.weishilei.blog.mapper.PostCategoryRefMapper;
 import top.weishilei.blog.mapper.PostTagRefMapper;
-import top.weishilei.blog.service.CategoryService;
-import top.weishilei.blog.service.PostService;
-import top.weishilei.blog.service.TagService;
-import top.weishilei.blog.service.impl.CommentServiceImpl;
-import top.weishilei.blog.service.impl.LinkServiceImpl;
+import top.weishilei.blog.service.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,19 +30,22 @@ public class HomeController extends BaseController {
     @Autowired
     private TagService tagService;
     @Autowired
-    private CommentServiceImpl commentService;
+    private CommentService commentService;
     @Autowired
     private PostTagRefMapper postTagRefMapper;
     @Autowired
     private PostCategoryRefMapper postCategoryRefMapper;
     @Autowired
-    private LinkServiceImpl linkService;
+    private LinkService linkService;
+    @Autowired
+    private BannerService bannerService;
 
     @GetMapping("/index")
     public ModelAndView index(@RequestParam(value = "page", defaultValue = "1") int page,
                               @RequestParam(value = "size", defaultValue = "10") int size) {
         ModelAndView modelAndView = new ModelAndView("home/index");
         setResponseHomeData(modelAndView, page, size);
+        modelAndView.addObject("bannerList", bannerService.selectOrderBySort());
 
         return modelAndView;
     }

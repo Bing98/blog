@@ -70,6 +70,9 @@ public class AdminImageController extends BaseController {
         boolean isDelete = new File(savePath + name).delete();
         if (isDelete) {
             boolean isSuccess = imageService.delete(id) > 0;
+            if (isSuccess) {
+                bannerService.deleteByImageId(id);
+            }
             return isSuccess ? Result.success() : Result.fail();
         }
 
@@ -85,16 +88,19 @@ public class AdminImageController extends BaseController {
     }
 
     @GetMapping("/addBanner")
-    public ModelAndView addBanner() {
+    public ModelAndView addBanner(Integer id) {
         ModelAndView modelAndView = new ModelAndView("/admin/image/add-image");
         modelAndView.addObject("imageList", imageService.select());
         modelAndView.addObject("postList", postService.selectAll());
+        if (id != null && id > 0) {
+            modelAndView.addObject("banner", bannerService.selectById(id));
+        }
 
         return modelAndView;
     }
 
     @ResponseBody
-    @PostMapping("/addBanner")
+    @PostMapping("/saveBanner")
     public String addBanner(Banner banner) {
         Integer imageId = banner.getImageId();
         if (imageId == null || imageId < 1) {
@@ -105,8 +111,26 @@ public class AdminImageController extends BaseController {
             return Result.fail();
         }
 
-        boolean isSuccess = bannerService.insert(banner) > 0;
+        Integer id = banner.getId();
+        boolean isSuccess = false;
+        if (id == null) {
+            isSuccess = bannerService.insert(banner) > 0;
+        } else {
+            isSuccess = bannerService.update(banner) > 0;
+        }
 
         return isSuccess ? Result.success() : Result.fail();
     }
+
+    @ResponseBody
+    @GetMapping("/deleteBanner")
+    public String delte(Integer id) {
+        if (id == null || id < 1) {
+            return Result.fail();
+        }
+
+        boolean isSuccess = bannerService.delete(id) > 0;
+        return isSuccess ? Result.success() : Result.fail();
+    }
+
 }

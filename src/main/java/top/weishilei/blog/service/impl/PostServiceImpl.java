@@ -29,6 +29,8 @@ public class PostServiceImpl implements PostService {
     private TagMapper tagMapper;
     @Autowired
     private CommentMapper commentMapper;
+    @Autowired
+    private BannerMapper bannerMapper;
 
     @Override
     public Post selectByTitle(String title) {
@@ -80,6 +82,7 @@ public class PostServiceImpl implements PostService {
             postTagRefMapper.deleteByPostId(id);
             postCategoryRefMapper.deleteByPostId(id);
             commentMapper.deleteByPostId(id);
+            bannerMapper.deleteByPostId(id);
         }
 
         return postMapper.deleteById(ids);

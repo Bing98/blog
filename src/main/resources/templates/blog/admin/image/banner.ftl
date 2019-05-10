@@ -38,10 +38,10 @@
                     ${banner['sort']}
                 </td>
                 <td>
-                    <a title="编辑" href="#">
+                    <a title="编辑" href="#" onclick="editImage(${banner['id']})">
                         <i class="layui-icon">&#xe642;</i>
                     </a>
-                    <a title="删除" href="#">
+                    <a title="删除" href="#" onclick="deleteBanner(${banner['id']})">
                         <i class="layui-icon">&#xe640;</i>
                     </a>
                 </td>
@@ -51,6 +51,15 @@
     </table>
 </div>
 <script>
+    function editImage(id) {
+        layer.open({
+            type: 2,
+            title: '添加轮播图',
+            area: ['55%', '90%'],
+            content: '/admin/image/addBanner?id=' + id
+        })
+    }
+
     $("#add").click(function () {
         layer.open({
             type: 2,
@@ -59,6 +68,26 @@
             content: '/admin/image/addBanner'
         })
     })
+
+    function deleteBanner(id) {
+        Lobibox.confirm({
+            msg: '确定删除吗？',
+            title: '提示',
+            iconClass: false,
+            callback: function($this, type, ev) {
+                if (type == 'yes') {
+                    $.ajax({
+                        url: "/admin/image/deleteBanner?id=" + id,
+                        method: "GET",
+                        dataType : "JSON",
+                        success: function (data) {
+                            responseMsg(data);
+                        }
+                    })
+                }
+            }
+        });
+    }
 </script>
 </body>
 </html>

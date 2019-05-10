@@ -30,11 +30,9 @@
 			<main class="col-md-6">
 				<div id="slide">
 					<div>
-						<img src="1.jpg" alt="">
-						<img src="2.jpg" alt="">
-						<img src="3.jpg" alt="">
-						<img src="4.jpg" alt="">
-						<img src="5.jpg" alt="">
+						<#list bannerList as banner>
+							<a href="/detail?id=${banner['postId']}" target="_blank"><img src="${banner['imagePath']}" alt="${banner['postTitle']}"></a>
+						</#list>
 					</div>
 				</div>
 				<#list result['list'] as post>
