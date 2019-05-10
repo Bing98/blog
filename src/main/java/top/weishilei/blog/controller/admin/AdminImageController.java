@@ -79,8 +79,7 @@ public class AdminImageController extends BaseController {
     @GetMapping("/banner")
     public ModelAndView banner() {
         ModelAndView modelAndView = new ModelAndView("/admin/image/banner");
-        List<Banner> bannerList = bannerService.selectOrderBySort();
-
+        modelAndView.addObject("bannerList", bannerService.selectOrderBySort());
 
         return modelAndView;
     }

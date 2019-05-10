@@ -26,10 +26,27 @@
         </tr>
         </thead>
         <tbody>
+        <#list bannerList as banner>
             <tr>
                 <td>
+                    <img style="max-width: 300px; max-height: 300px;" src="${banner['imagePath']}" />
+                </td>
+                <td>
+                    ${banner['postTitle']}
+                </td>
+                <td>
+                    ${banner['sort']}
+                </td>
+                <td>
+                    <a title="编辑" href="#">
+                        <i class="layui-icon">&#xe642;</i>
+                    </a>
+                    <a title="删除" href="#">
+                        <i class="layui-icon">&#xe640;</i>
+                    </a>
                 </td>
             </tr>
+        </#list>
         </tbody>
     </table>
 </div>
@@ -37,6 +54,7 @@
     $("#add").click(function () {
         layer.open({
             type: 2,
+            title: '添加轮播图',
             area: ['55%', '90%'],
             content: '/admin/image/addBanner'
         })
