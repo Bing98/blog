@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="top.weishilei.blog.mapper.BannerMapper">
+    <resultMap id="BaseResultMap" type="top.weishilei.blog.domain.Banner">
+        <id column="id" property="id" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="image_id" property="imageId" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="post_id" property="postId" jdbcType="INTEGER" javaType="INTEGER" />
+        <result column="image_path" property="imagePath" jdbcType="VARCHAR" javaType="STRING" />
+        <result column="post_title" property="postTitle" jdbcType="VARCHAR" javaType="STRING" />
+    </resultMap>
+
+    <sql id="BaseColumnList">
+        id, image_id, image_path, post_id, post_title, sort
+    </sql>
+
+    <select id="selectOrderBySort" resultMap="BaseResultMap">
+        select
+        <include refid="BaseColumnList"></include>
+        from banner order by sort desc
+    </select>
+
+    <select id="selectById" resultMap="BaseResultMap" parameterType="Integer">
+        select
+        <include refid="BaseColumnList"></include>
+        from banner where id = #{id}
+    </select>
+
+    <update id="update">
+        update banner set image_id = #{imageId}, post_id = #{postId},
+        sort = #{sort}, image_path = #{imagePath}, post_title = #{postTitle} where id = #{id}
+    </update>
+
+    <delete id="delete">
+        delete from banner where id = #{id}
+    </delete>
+
+    <delete id="deleteByImageId">
+        delete from banner where image_id = #{id}
+    </delete>
+
+    <delete id="deleteByPostId">
+        delete from banner where post_id = #{id}
+    </delete>
+
+    <insert id="insert" parameterType="Banner">
+        insert into banner (id, image_id, post_id, sort, image_path, post_title)
+        values (#{id}, #{imageId}, #{postId}, #{sort}, #{imagePath}, #{postTitle})
+    </insert>
+</mapper>
