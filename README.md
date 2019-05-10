@@ -31,12 +31,12 @@
 
 ## 技术栈
 
-* 核心框架：Springboot
-* 数据库框架：Mybatis
-* 模板引擎：Freemarker
+* 核心框架：SpringBoot
+* 数据库框架：MyBatis
+* 模板引擎：FreeMarker
 * 日志：log4j2
 * 数据库：MySQL8.0
-* 前端：JQuery、Boostrap、Layui
+* 前端：layui、jQuery、Boostrap
 * 进度条：Nprogress
 * Markdown组件：Simplemde
 
