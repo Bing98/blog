@@ -18,13 +18,16 @@
 ## 后台
 
 主页
-![index](http://ww1.sinaimg.cn/large/e648b407ly1g2w9wg3hfuj21hc0t4jts.jpg)
+![index](http://ww1.sinaimg.cn/large/e648b407ly1g2wa1bur4yj21hc0t4q51.jpg)
 
 帖子
-![post](http://ww1.sinaimg.cn/large/e648b407ly1g2w9wg20f3j21hc0t4myy.jpg)
+![post](http://ww1.sinaimg.cn/large/e648b407ly1g2wa1btgchj21hc0t4jsx.jpg)
 
 图片
-![image](http://ww1.sinaimg.cn/large/e648b407ly1g2w9wg2c2cj21hc0t4grl.jpg)
+![image](http://ww1.sinaimg.cn/large/e648b407ly1g2wa1bujw2j21hc0t4jx3.jpg)
+
+设置
+![config](http://ww1.sinaimg.cn/large/e648b407ly1g2wa1busjmj21hc0t4abj.jpg)
 
 ## 技术栈
 
@@ -36,3 +39,6 @@
 * 前端：JQuery、Boostrap、Layui
 * 进度条：Nprogress
 * Markdown组件：Simplemde
+
+## 开源协议
+[MIT](/LICENSE "开源协议")
