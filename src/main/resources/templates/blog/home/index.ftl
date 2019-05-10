@@ -8,14 +8,14 @@
 	<#include "common.ftl" />
 	<style>
 		#slide{
-			width:520px;
-			height:280px;
+			width:900px;
+			height:380px;
 			margin: auto;
 		}
 
 		img{
-			width:520px;
-			height:280px;
+			width:900px;
+			height:380px;
 		}
 	</style>
 </head>

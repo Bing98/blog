@@ -49,18 +49,6 @@
                             <cite>草稿箱</cite>
                         </a>
                     </li>
-                    <li>
-                        <a href="#" onclick="switchPage('/admin/category', -3)">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>分类管理</cite>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" onclick="switchPage('/admin/tag', -4)">
-                            <i class="iconfont">&#xe6a7;</i>
-                            <cite>标签管理</cite>
-                        </a>
-                    </li>
                 </ul>
             </li>
             <li>
@@ -93,25 +81,35 @@
                     </li >
                 </ul>
             </li>
+
             <li>
                 <a href="javascript:;">
-                    <i class="fa fa-cog"></i>
-                    <cite>设置</cite>
+                    <i class="fa fa-comment"></i>
+                    <cite>标签</cite>
                     <i class="iconfont nav_right">&#xe697;</i>
                 </a>
                 <ul class="sub-menu">
                     <li>
-                        <a href="#" onclick="switchPage('/admin/config', -8)">
+                        <a href="#" onclick="switchPage('/admin/tag', -4)">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>博客设置</cite>
+                            <cite>标签管理</cite>
                         </a>
-                    </li>
+                    </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-comment"></i>
+                    <cite>分类</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
                     <li>
-                        <a href="#" onclick="switchPage('/admin/config/about', -7)">
+                        <a href="#" onclick="switchPage('/admin/category', -3)">
                             <i class="iconfont">&#xe6a7;</i>
-                            <cite>关于我</cite>
+                            <cite>分类管理</cite>
                         </a>
-                    </li>
+                    </li >
                 </ul>
             </li>
             <li>
@@ -135,6 +133,27 @@
                             <cite>轮播图管理</cite>
                         </a>
                     </li >
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;">
+                    <i class="fa fa-cog"></i>
+                    <cite>设置</cite>
+                    <i class="iconfont nav_right">&#xe697;</i>
+                </a>
+                <ul class="sub-menu">
+                    <li>
+                        <a href="#" onclick="switchPage('/admin/config', -8)">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>博客设置</cite>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" onclick="switchPage('/admin/config/about', -7)">
+                            <i class="iconfont">&#xe6a7;</i>
+                            <cite>关于我</cite>
+                        </a>
+                    </li>
                 </ul>
             </li>
         </ul>
