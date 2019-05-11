@@ -1,6 +1,6 @@
 <div class="container">
     <header id="site-header">
-        <div class="row">
+        <div class="row" style="width: 68%; margin: auto;">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
                     <h2><a href="/index"><b>${webSiteConfig['title']}</b></a></h2>

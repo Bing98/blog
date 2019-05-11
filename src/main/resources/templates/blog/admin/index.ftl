@@ -10,7 +10,7 @@
 </head>
 <body>
 <div class="container">
-    <div class="logo"><a href="./index.html">后台管理</a></div>
+    <div class="logo"><a href="/">后台管理</a></div>
     <div class="left_open">
         <i title="展开左侧栏" class="iconfont">&#xe699;</i>
     </div>
