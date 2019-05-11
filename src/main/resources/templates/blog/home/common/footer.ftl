@@ -15,8 +15,8 @@
     <nav>
         <ul>
             <li><a href="/index">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Links</a></li>
+            <li><a href="/about">About</a></li>
+            <li><a href="/link">Links</a></li>
         </ul>
     </nav>
 </div>

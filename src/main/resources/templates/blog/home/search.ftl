@@ -19,7 +19,7 @@
         <div class="row">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h2><a href="/index"><b>ikigai</b> &amp; 个人博客</a></h2>
+                    <h2><a href="/index"><b id="title">${webSiteConfig['title']}</b></a></h2>
                 </div>
             </div>
 
