@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+    <!DOCTYPE html>
 <html>
 <head>
     <title>Links</title>
@@ -17,7 +17,7 @@
         border-top: 1px solid #000000;
     }
 
-    form {
+    #form-link {
         padding: 30px;
     }
 
@@ -28,6 +28,7 @@
     #show-links span {
         border: 1px solid #ddd;
         padding: 10px;
+        background-color: #FFFFFF;
     }
 </style>
 <#include "common/nav.ftl" />
@@ -43,7 +44,7 @@
                     </#list>
                 </div>
 
-                <form class="layui-form" action="">
+                <form class="layui-form" id="form-link">
                     <div class="layui-form-item">
                         <label class="layui-form-label">网站名称</label>
                         <div class="layui-input-block">

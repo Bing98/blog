@@ -32,7 +32,7 @@
 * {outline: none;}
 
 .container {
-	width: 100%;
+	width: 98%;
 }
 
 h1, 
@@ -61,9 +61,14 @@ a:hover, a:focus {
 	background-color: #eee;
 }
 
+.container {
+	 padding-right: 0px;
+	 padding-left: 0px;
+}
+
 body {
 	color: #444;
-	font-family: 'Lato', sans-serif;
+	background-color: #f7f7f7;
 }
 
 p {
@@ -207,6 +212,7 @@ figure {
 .post {
 	background: #fff;
 	padding: 30px 30px 0;
+	border-radius: 5px 5px 5px 5px;
 }
 
 .entry-title {
@@ -232,19 +238,18 @@ figure {
 	color: #000;
 	max-width: 100%;
 	word-wrap: break-word;
+	padding: 30px;
 }
 
 .post-comments,
 .post-date,
 .post-author {
-	position: relative;
 	padding-right: 15px;
 }
 
 .post-comments::after,
 .post-date::after,
 .post-author::after {
-	position: absolute;
 	content: '.';
 	color: #000;
 	font-size: 30px;
@@ -342,7 +347,8 @@ figure {
 
 .widget {
     background: #fff;  
-    padding: 30px 0 0;  
+    padding: 17px;
+	border-radius: 5px 5px 5px 5px;
 }
 
 .widget-title {  
@@ -489,7 +495,7 @@ figure {
 #searchform {
     position: relative;
 	border: 1px solid #ddd;
-	min-height: 42px;
+	min-height: 38px;
 }
 
 #searchform input[type=search] {
@@ -834,4 +840,10 @@ figure {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+}
+
+@media screen and (min-width: 300px) and (max-device-width: 600px) {
+	#title {
+		font-size: 18px;
+	}
 }

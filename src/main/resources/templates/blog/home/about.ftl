@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <#include "common.ftl" />
+    <style>
+        .post {
+            padding: 0px;
+        }
+    </style>
 </head>
 <style>
     #show-comment {
@@ -39,7 +44,7 @@
         <div class="row">
             <#include "common/live2d.ftl" />
             <main class="col-md-6">
-                <h1 class="page-title">关于我</h1>
+                <h1 class="page-title" style="margin-bottom: 30px;">关于我</h1>
                 <article class="post">
                     <div class="entry-content clearfix">
                         ${aboutPost['content']!"很懒！什么都没有写！"}

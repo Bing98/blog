@@ -7,15 +7,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<#include "common.ftl" />
 	<style>
-		#slide{
-			width:900px;
-			height:380px;
+		#slide {
+			width: 100%;
+			height: 380px;
 			margin: auto;
+			margin-bottom: 30px;
 		}
 
-		img{
-			width:900px;
-			height:380px;
+		img {
+			width: 917px;
+			height: 380px;
 		}
 	</style>
 </head>
@@ -28,13 +29,15 @@
 		<div class="row">
 			<#include "common/live2d.ftl" />
 			<main class="col-md-6">
-				<div id="slide">
-					<div>
-						<#list bannerList as banner>
-							<a href="/detail?id=${banner['postId']}" target="_blank"><img src="${banner['imagePath']}" alt="${banner['postTitle']}"></a>
-						</#list>
+				<#if (bannerList?size > 0)>
+					<div id="slide">
+						<div>
+							<#list bannerList as banner>
+								<a href="/detail?id=${banner['postId']}" target="_blank"><img src="${banner['imagePath']}" alt="${banner['postTitle']}"></a>
+							</#list>
+						</div>
 					</div>
-				</div>
+				</#if>
 				<#list result['list'] as post>
 					<article class="post">
 						<header class="entry-header">
@@ -42,13 +45,10 @@
 								<a href="/detail?id=${post['id']}">${post['title']}</a>
 							</h1>
 							<div class="entry-meta">
-								<span class="post-date"><a href="#">${post['createTime']?string("yyyy-MM-dd HH:mm")}</a></span>
-
-								<span class="post-author"><a href="#">${post['author']}</a></span>
-
-								<span class="post-comments"><a href="#">${post['commentCount']} 条留言</a></span>
-
-								<span class="comments-link"><a href="#">${post['viewCount']} 次查看</a></span>
+								<span class="post-author"><a href="#"><i class="layui-icon layui-icon-username"></i>${post['author']}</a></span>
+								<span class="post-date"><a href="#"><i class="layui-icon layui-icon-date"></i>${post['createTime']?string("yyyy-MM-dd HH:mm")}</a></span>
+								<span class="post-comments"><a href="#"><i class="layui-icon layui-icon-dialogue"></i>${post['commentCount']} 条留言</a></span>
+								<span class="comments-link"><a href="#"><i class="layui-icon layui-icon-log"></i>${post['viewCount']} 次查看</a></span>
 							</div>
 						</header>
 						<div class="entry-content clearfix">

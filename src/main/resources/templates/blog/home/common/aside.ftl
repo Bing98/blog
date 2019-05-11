@@ -1,4 +1,4 @@
-<aside class="col-md-4">
+<aside class="col-md-2">
     <div class="widget widget-recent-posts">
         <h3 class="widget-title">最近文章</h3>
         <ul>
@@ -10,9 +10,11 @@
                 </#if>
             </#list>
         </ul>
+
     </div>
 
     <div class="widget widget-archives">
+        <hr class="layui-bg-red">
         <h3 class="widget-title">归档</h3>
         <ul>
             <#list year as date>
@@ -24,6 +26,7 @@
     </div>
 
     <div class="widget widget-category">
+        <hr class="layui-bg-red">
         <h3 class="widget-title">分类</h3>
         <ul>
             <#list categoryList as c>
@@ -35,6 +38,7 @@
     </div>
 
     <div class="widget widget-tag">
+        <hr class="layui-bg-red">
         <h3 class="widget-title">标签</h3>
         <ul>
             <#list tagList as tag>
@@ -46,6 +50,7 @@
     </div>
 
     <div class="widget">
+        <hr class="layui-bg-red">
         <h3 class="widget-title">联系我</h3>
         <ul>
             <li style="margin-bottom: 10px;">

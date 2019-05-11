@@ -3,7 +3,7 @@
         <div class="row" style="width: 68%; margin: auto;">
             <div class="col-md-4 col-sm-5 col-xs-8">
                 <div class="logo">
-                    <h2><a href="/index"><b>${webSiteConfig['title']}</b></a></h2>
+                    <h2><a href="/index"><b id="title">${webSiteConfig['title']}</b></a></h2>
                 </div>
             </div>
             <div class="col-md-8 col-sm-7 col-xs-4">

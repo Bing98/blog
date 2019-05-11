@@ -5,6 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <#include "common.ftl" />
+    <style>
+        .post {
+            padding: 0px;
+        }
+    </style>
 </head>
 <style>
     #show-comment {
@@ -41,10 +46,10 @@
             <main class="col-md-6">
                 <h1 class="page-title">${post['title']}</h1>
                 <div class="entry-meta" style="margin-top: 10px;">
-                    <span class="post-date"><a href="#">${post['createTime']?string("yyyy-MM-dd HH:mm")}</a></span>
-                    <span class="post-author"><a href="#">${post['author']}</a></span>
-                    <span class="post-comments"><a href="#">${post['commentCount']} 条留言</a></span>
-                    <span class="comments-link"><a href="#">${post['viewCount']} 次查看</a></span>
+                    <span class="post-author"><a href="#"><i class="layui-icon layui-icon-username"></i>${post['author']}</a></span>
+                    <span class="post-date"><a href="#"><i class="layui-icon layui-icon-date"></i>${post['createTime']?string("yyyy-MM-dd HH:mm")}</a></span>
+                    <span class="post-comments"><a href="#"><i class="layui-icon layui-icon-dialogue"></i>${post['commentCount']} 条留言</a></span>
+                    <span class="comments-link"><a href="#"><i class="layui-icon layui-icon-log"></i>${post['viewCount']} 次查看</a></span>
                 </div>
                 <article class="post">
                     <div class="entry-content clearfix">
