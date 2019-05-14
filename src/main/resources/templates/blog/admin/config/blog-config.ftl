@@ -147,7 +147,8 @@
         var uploadInst = upload.render({
             elem: '#upload-image',
             url: '/admin/config/upload',
-            accept: 'images',
+            accept: 'file',
+            exts: 'ico',
             number: 1,
             size: 2048,
             done: function(res){

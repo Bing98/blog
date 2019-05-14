@@ -71,6 +71,7 @@ public class AdminController extends BaseController {
         }
         logService.insert(new Log(username + LogUtils.LOGIN.getContent(), id, getRequest().getRemoteAddr()));
         getSession().setAttribute("superName", username);
+
         return Result.success();
     }
 
@@ -101,6 +102,7 @@ public class AdminController extends BaseController {
         String name = getSession().getAttribute("superName").toString();
         getSession().removeAttribute("superName");
         logService.insert(new Log(name + LogUtils.LOGOUT.getContent(), userService.selectUserByName(name).getId(), getRequest().getRemoteAddr()));
+
         return new ModelAndView("admin/login");
     }
 

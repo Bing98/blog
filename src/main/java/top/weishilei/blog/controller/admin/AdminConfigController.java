@@ -131,36 +131,21 @@ public class AdminConfigController extends BaseController {
             return Result.fail();
         }
 
-        String path = getPath() + File.separator + "other" + File.separator + "favicon.ico";
-        BufferedInputStream in = null;
-        BufferedOutputStream out = null;
-        try {
-            in = new BufferedInputStream(file.getInputStream());
-            Image image = ImageIO.read(in);
-            BufferedImage bufferedImage = new BufferedImage(32, 32, BufferedImage.TYPE_INT_RGB);
-            bufferedImage.getGraphics().drawImage(image, 0, 0,32, 32, null);
-            out = new BufferedOutputStream(new FileOutputStream(path));
-            ImageIO.write(bufferedImage, "png", out);
-
-            return Result.success();
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            if (in != null) {
-                try {
-                    in.close();
-                } catch (IOException e) {
-                }
-            }
-            if (out != null) {
-                try {
-                    out.close();
-                } catch (IOException e) {
-                }
-            }
+        String fileName = file.getOriginalFilename();
+        String sufix = fileName.substring(fileName.lastIndexOf(".") + 1);
+        if (!"ico".equalsIgnoreCase(sufix)) {
+            return Result.fail();
         }
 
-        return Result.fail();
+        String path = getPath() + File.separator + "other" + File.separator + "favicon.ico";
+
+        try {
+            file.transferTo(new File(path));
+
+            return Result.success();
+        } catch (IOException e) {
+            return Result.fail();
+        }
     }
 
 }
