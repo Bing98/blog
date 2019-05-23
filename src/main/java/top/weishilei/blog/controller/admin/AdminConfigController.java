@@ -125,7 +125,7 @@ public class AdminConfigController extends BaseController {
     }
 
     @ResponseBody
-    @PostMapping("upload")
+    @PostMapping("/upload")
     public String upload(@RequestParam("file") MultipartFile file) {
         if (file == null) {
             return Result.fail();
@@ -147,5 +147,4 @@ public class AdminConfigController extends BaseController {
             return Result.fail();
         }
     }
-
 }
